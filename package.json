@@ -4,10 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "./node_modules/.bin/wdio wdio.conf.js",
-    "build:config": "./node_modules/.bin/babel wdio.conf.js --out-file wdio.conf.compiled.js",
-    "start:server": "./node_modules/.bin/selenium-standalone start",
-    "setup-test": "./node_modules/.bin/selenium-standalone install"
+    "test": "./node_modules/.bin/wdio wdio.conf.js"
   },
   "author": "",
   "license": "ISC",

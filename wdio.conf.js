@@ -68,6 +68,9 @@ exports.config = {
     },
     {
         browserName: 'firefox'
+    },
+    {
+        browserName: 'internet explorer'
     }],
     //
     // ===================
@@ -117,25 +120,37 @@ exports.config = {
     // your test setup with almost no effort. Unlike plugins, they don't add new
     // commands. Instead, they hook themselves up into the test process.
     //services: ['chromedriver'],
-    services: ['selenium-standalone'],
-    seleniumLogs: 'logs',
-    // seleniumInstallArgs: {
-    //   version : "3.9",
-    //   baseURL : "https://selenium-release.storage.googleapis.com",
-    //   drivers : {
-    //     chrome : {
-    //       version : "80.0.3987.16",
-    //       arch    : process.arch,
-    //       baseURL : "https://chromedriver.storage.googleapis.com",
-    //     }
-    //   }
-    // },
-    seleniumArgs: {
-        drivers: {
-           chrome: { version: '80.0.3987.16' },
-           firefox: { version: '72.0.2' },
-        }
-    },
+    services: [
+        ['selenium-standalone', {
+            logPath: 'logs',
+            installArgs: {
+                version : "3.9",
+                baseURL : "https://selenium-release.storage.googleapis.com",
+                drivers: {
+                    chrome : {
+                      version : "80.0.3987.16",
+                      arch    : process.arch,
+                      baseURL : "https://chromedriver.storage.googleapis.com",
+                    },
+                    firefox: { version: '0.26.0' },
+                    ie: {
+                      // check for more recent versions of internet explorer driver here:
+                      // https://selenium-release.storage.googleapis.com/index.html
+                      version: '3.9.0',
+                      arch: process.arch,
+                      baseURL: 'https://selenium-release.storage.googleapis.com'
+                    }
+                }
+            },
+            args: {
+                drivers: {
+                    chrome: { version: '80.0.3987.16' },
+                    firefox: { version: '0.26.0' },
+                    ie: {version:'3.9.0'}
+                }
+            },
+        }]
+    ],
     
     // Framework you want to run your specs with.
     // The following are supported: Mocha, Jasmine, and Cucumber
